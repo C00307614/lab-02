@@ -1,8 +1,7 @@
 READ = "sample_auth_small.log" # Input from logfile
 count = 0
 ips = []
-unique_ips = []
-unique = []
+unique_ip = []
 
 def ip_parser(line): # Method created and called ip_parser
 
@@ -12,12 +11,10 @@ def ip_parser(line): # Method created and called ip_parser
             anchor = parts.index("from") # Anchor = the postion "from is at"
             ip = parts[anchor+1] # Ip is the location of from in the string +1 
             ip.strip
+            unique_ip.append(ip)
             ips.append(ip)
-            if len(unique_ips) < 9:
-                unique_ips.append(ip)
-                unique_ips = set(unique)
             return ip.strip()
-            return Unique
+            return unique_ip
 
         except (ValueError, IndexError):
             return None # If no IP return none
@@ -35,6 +32,6 @@ if __name__ == "__main__":
 
 print("Total lines read =",count)
 print("The number of unique IPs found was",len(set(ips)))
-print(unique)
 
+# NEED TO FIND UNIQUE IPS  
 
