@@ -6,7 +6,7 @@ ips = []
 counts = defaultdict(int)
 import time
 
-
+start = time.time()
 
 def ip_parser(line): # Method created and called ip_parser
 
@@ -47,7 +47,6 @@ with open("sample_auth_small.log") as f:
                 
 print("The number of login attempts for each IP was: ",counts,end="\n\n") # Print number of login attempts for each IP
 
-start = time.time()
 with open("sample_auth_small.log") as f:
     for line in f:
         if "Failed password" in line or "Invalid user" in line: # Find lines with these phrases
@@ -70,4 +69,5 @@ for line in top_n(counts): # For each IP printed include Rank (from 1 to 5)
     count = count + 1 
     print(count,"-", line,"\n") # Rank - "IP"
 
+end = time.time()
 print("Elapsed:", end-start, "seconds")
